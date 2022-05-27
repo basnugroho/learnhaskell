@@ -1,5 +1,5 @@
 test :: [Int]
-test = [4,5,5,6,7,3,7,5,8,6,8,9,9,8,5,5]
+test = [5,5,2,0,4,2,2,0,4,1,9,2,8,3,3,0]
 --1
 checkDigit:: [Int]
 checkDigit = reverse (drop 1 (reverse test))
@@ -22,10 +22,11 @@ substract9 n = [ if c > 9 then c - 9 else c | c <- n ]
 addAllNumbers :: [Int] -> Int 
 addAllNumbers n = sum [ c | c <- n ] + sum [ d | d <- checkDigit]
 --7
-checkDivide10 ::  
+checkDivide10 ::  Int -> Bool
 checkDivide10 n = n `mod` 10 == 0
 --add all together
-answer = checkDivide10 (addAllNumbers (substract9 (multiplyOddPositions (reverseNumbers (dropLastDigit test)))))
+validasi :: [Int] -> Bool
+validasi x = checkDivide10 (addAllNumbers (substract9 (multiplyOddPositions (reverseNumbers (dropLastDigit x)))))
 
 reverseNum [] = []
 reverseNum (x:xs) = reverseNum xs ++ [x]
